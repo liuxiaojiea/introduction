@@ -49,7 +49,7 @@ let loadingRender = (function () {
     let delayTimer = null;
     let maxDelay = function (callback) {
         delayTimer = setTimeout(() => {
-            if (n / len >= 0.9) {
+            if (n / len >= 0.85) {
                 $current.css('width', '100%');
                 callback && callback();
                 return
