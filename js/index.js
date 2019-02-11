@@ -55,7 +55,7 @@ let loadingRender = (function () {
                 return
             }
             alert('非常遗憾，您的网络状况不佳，请稍后再试!')
-            window.location.href = 'http://www.qq.com'
+            window.location.href = 'https://liuxiaojiea.github.io/introduction/'
         }, 10000)
     }
     //DONE：完成
