@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/reset.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script>
+        ~ function anonymous() {
+            //=>根据当前设备的宽度，动态计算出rem的换算比例，实现页面中元素的等比缩放
+            let computedREM = function () {
+                let winW = document.documentElement.clientWidth,
+                    desW = 640;
+                if (winW >= 640) {
+                    document.documentElement.style.fontSize = '100px'
+                    return
+                }
+                document.documentElement.style.fontSize = winW / desW * 100 + 'px'
+            }
+            computedREM();
+            window.addEventListener('resize', computedREM)
+        }();
+    </script>
+</head>
+
+<body>
+    <div class="music" >
+        <audio src="./audio/Valentin - A Little Story.mp3" autoplay loop></audio>
+    </div>
+    <main class="mainBox">
+
+        <section class="loadingBox">
+            <div class="title">
+                <h1>前端工程师应聘</h1>
+                <h2>刘琪</h2>
+            </div>
+            <div class="progress">
+                <div class="current"></div>
+            </div>
+        </section>
+
+        <section class="oneBox">
+            <div class="contain">
+                <div class="picture">
+                    <img src="./img/psb.jpg" alt="">
+                </div>
+                <div class="msg">
+                    <div class="title">刘琪</div>
+                    <ul>
+                        <li>年龄：23</li>
+                        <li>籍贯：河北</li>
+                        <li>专业：电子信息工程</li>
+                        <li>毕业院校：北华航天工业学院</li>
+                        <li>电话：13931705540</li>
+                        <li>E-mail:451464730.@qq.com</li>
+                    </ul>
+                </div>
+                <div class="page">
+                    01-关于我
+                </div>
+            </div>
+        </section>
+
+        <section class="twoBox">
+            <div class="page">02-技术掌握</div>
+            <div class="inner">
+                <img src="./img/gezi.png" alt="">
+                <ul>
+                    <li>css</li>
+                    <li>js</li>
+                    <li>Vue</li>
+                    <li>jQ</li>
+                    <li>算法</li>
+                </ul>
+            </div>
+            <div class="bottom">
+                <div class="dec"></div>
+                <div class="dec"></div>
+                <div class="sec">
+                    本人擅长：原生JS、ES6、Promise等设计模式、组件和插件封装，可以使用Vue框架开发，看过JQ源码，可以开发各种Hybrid混合APP...
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
+<script src="./js/zepto.min.js"></script>
+<script src="./js/index.js"></script>
