@@ -36,7 +36,7 @@ body {
 }
 /*loading*/
 .loadingBox {
-  background: url(../img/1.jpg);
+  background-color: lightseagreen;
   background-size: cover;
 }
 .loadingBox .title {
