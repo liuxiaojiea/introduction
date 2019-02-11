@@ -37,7 +37,7 @@ let loadingRender = (function () {
                 tempImg = null;
                 $current.css('width', (++n) / len * 100 + '%');
                 //加载完成让当前的loading页消失
-                if (n === len) {
+                if (n/len >= 0.9) {
                     clearTimeout(delayTimer)
                     callback && callback()
                 }
