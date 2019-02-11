@@ -25,7 +25,7 @@ let $music = $('.music'),
 
 //loading加第一页
 let loadingRender = (function () {
-    let imgData = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/psb.jpg", "img/wenli.png", "img/gezi.png", "img/leaves.png", "img/musicon.png", "img/musicoff.png"];
+    let imgData = ["img/1.jpg", "img/2.jpg",  "img/psb.jpg", "img/wenli.png", "img/gezi.png", "img/leaves.png", "img/musicon.png", "img/musicoff.png"];
 
     let n = 0,
         len = imgData.length;
