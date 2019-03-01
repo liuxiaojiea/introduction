@@ -5,7 +5,8 @@ let $music = $('.music'),
     $msg = $oneBox.find('.msg'),
     $page = $oneBox.find('.page'),
     $twoBox = $('.twoBox'),
-    $threeBox = $('.threeBox');
+    $threeBox = $('.threeBox'),
+    $endBox = $('.endBox');
 //音乐播放板块
 ~ function () {
     var index = 2;
@@ -44,7 +45,7 @@ let oneBoxRender = (function () {
 })()
 //loading页
 let loadingRender = (function () {
-    let imgData = ["img/psb.jpg", "img/wenli.png", "img/gezi.png", "img/leaves.png", "img/musicon.png", "img/musicoff.png",'img/1.png','img/3.png'];
+    let imgData = ["img/psb.jpg", "img/wenli.png", "img/gezi.png", "img/leaves.png", "img/musicon.png", "img/musicoff.png", 'img/1.png', 'img/3.png'];
     let n = 0,
         len = imgData.length;
 
@@ -77,7 +78,7 @@ let loadingRender = (function () {
         }, 10000)
     }
     //DONE：完成
-    let done=oneBoxRender.init
+    let done = oneBoxRender.init
     return {
         init: function () {
             run(done);
@@ -113,14 +114,26 @@ let twoBoxRender = (function () {
 })()
 //第三页
 let threeBoxRender = (function () {
-
+    let $inner = $threeBox.find('.inner'),
+        $content=$inner.find('.content');
     return {
         init: function () {
+            setTimeout(()=>{
+                $inner.show()
+            },1000)
+            setTimeout(()=>{
+                $content.show()
+            },2000)
+        }
+    }
+})()
+let endBoxRender=(function(){
+    return {
+        init:function(){
 
         }
     }
 })()
-
 //页面切换
 function move(el, callback) {
     let str = 'up';
@@ -130,6 +143,7 @@ function move(el, callback) {
     el.ontouchend = function (e) {
 
         let y = e.changedTouches[0].pageY - this.y;
+        if(y==0)return 
         if (y > 0) {
             str = 'down'
         } else {
@@ -143,10 +157,10 @@ move($oneBox[0], function (str) {
         $oneBox[0].style.display = 'none';
         $twoBox[0].style.display = 'block'
         twoBoxRender.init()
-    } else {
+    } else{
         $oneBox[0].style.display = 'none';
-        $threeBox[0].style.display = 'block'
-        threeBoxRender.init()
+        $endBox[0].style.display = 'block'
+        endBoxRender.init()
     }
 })
 move($twoBox[0], function (str) {
@@ -163,11 +177,22 @@ move($twoBox[0], function (str) {
 move($threeBox[0], function (str) {
     if (str == 'up') {
         $threeBox[0].style.display = 'none';
-        $oneBox[0].style.display = 'block';
-        oneBoxRender.init();
+        $endBox[0].style.display = 'block';
+        endBoxRender.init();
     } else {
         $threeBox[0].style.display = 'none';
         $twoBox[0].style.display = 'block';
         twoBoxRender.init()
+    }
+})
+move($endBox[0], function (str) {
+    if (str == 'up') {
+        $endBox[0].style.display = 'none';
+        $oneBox[0].style.display = 'block';
+        oneBoxRender.init();
+    } else {
+        $endBox[0].style.display = 'none';
+        $threeBox[0].style.display = 'block';
+        threeBoxRender.init()
     }
 })
