@@ -101,14 +101,10 @@ let twoBoxRender = (function () {
             $twoBox.show();
             setTimeout(() => {
                 $innerImg.show()
-            }, 1000)
-            setTimeout(() => {
                 $innerLi.show()
-            }, 3000)
-            setTimeout(() => {
                 $innerDec.show();
                 $innerSec.show()
-            }, 5000)
+            }, 1000)
         }
     }
 })()
@@ -120,10 +116,8 @@ let threeBoxRender = (function () {
         init: function () {
             setTimeout(()=>{
                 $inner.show()
-            },1000)
-            setTimeout(()=>{
                 $content.show()
-            },2000)
+            },1000)
         }
     }
 })()
@@ -138,15 +132,14 @@ let endBoxRender=(function(){
 function move(el, callback) {
     let str = 'up';
     el.ontouchstart = function (e) {
-        this.y = e.changedTouches[0].pageY;
+        this.x = e.changedTouches[0].pageX;
     }
     el.ontouchend = function (e) {
-
-        let y = e.changedTouches[0].pageY - this.y;
-        if(y==0)return 
-        if (y > 0) {
+        let x = e.changedTouches[0].pageX - this.x;
+        if(x<=50 && x>=-50)return 
+        if (x > 50) {
             str = 'down'
-        } else {
+        } else if(x<-50){
             str = 'up'
         }
         callback(str);
