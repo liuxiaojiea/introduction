@@ -43,7 +43,7 @@ body {
 /*loading*/
 
 .loadingBox {
-    background: url(../img/1.jpg);
+    background-color:#04978f;
     background-size: cover;
     .title {
         width: 100%;
@@ -160,7 +160,7 @@ body {
     background: url('../img/leaves.png');
     width: 100%;
     height: 100%;
-    padding-top: 1rem;
+    padding-top: .8rem;
     .page {
         margin-left: .5rem;
         width: 3rem;
@@ -169,15 +169,15 @@ body {
         color: #fff;
         padding: 0.15rem;
         border-radius: .2rem;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         .bounceIn
     }
     .inner {
         width:100%;
         padding: 20px;
         position: relative;
-        margin-bottom: 40px;
         box-sizing: border-box;
+        margin-bottom:.4rem;
         img {
             display: none;
             width: 100%;
@@ -197,24 +197,24 @@ body {
             animation: rotateIn 2s;
         }
         ul li:nth-child(1) {
-            right: .25rem;
-            top: 1.4rem;
+            right: 2%;
+            top: 29%;
         }
         ul li:nth-child(2) {
-            right: 2.5rem;
-            top: 1.8rem;
+            right: 40%;
+            top: 38%;
         }
         ul li:nth-child(3) {
-            right: 3rem;
+            right:48%;
             top: 0;
         }
         ul li:nth-child(4) {
-            top: 2.5rem;
-            left: 0.2rem;
+            top: 46%;
+            left: 2%;
         }
         ul li:nth-child(5) {
-            left: 3.1rem;
-            bottom: .1rem;
+            left: 51%;
+            bottom: 0;
         }
     }
     .bottom {
@@ -230,7 +230,7 @@ body {
             display: none;
             position: absolute;
             width: 100px;
-            height:20px;
+            height:18px;
             background-color: #5CB85C;
             -webkit-animation: fadeIn 2s;
             animation: fadeIn 2s;
@@ -242,6 +242,49 @@ body {
     }
 }
 
+//第三页
+.threeBox{
+    background-image: url('../img/3.png');
+    height: 100%;
+    width:100%;
+    padding-top: .8rem;
+    .page {
+        width:100%;
+        margin: auto;
+        width: 3rem;
+        background: #027788;
+        font-size: .5rem;
+        color: #fff;
+        padding: 0.15rem;
+        border-radius: .2rem;
+        margin-bottom: 30px;
+    }
+    .inner{
+        width:100%;
+        .content{
+            background-image: url('../img/1.png');
+            background-repeat: no-repeat;
+            background-size: 5.5rem 3rem;
+            background-position-x: center;
+            font-size: .3rem;
+            text-align: center;
+            padding: .5rem;
+            margin-bottom:.5rem;
+            .pro{
+                display: block;
+                width:100%;
+                height:.6rem;
+                line-height: .6rem;
+                font-size: .4rem;
+                text-align: center;
+            }
+            p{
+                width:84%;
+                margin: auto;
+            }
+        }
+    }
+}
 @-webkit-keyframes rotateIn {
     from {
         -webkit-transform-origin: center;
@@ -464,7 +507,3 @@ body {
     }
   }
   
-  .rollIn {
-    -webkit-animation-name: rollIn;
-    animation-name: rollIn;
-  }

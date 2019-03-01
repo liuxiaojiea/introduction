@@ -4,13 +4,13 @@ let $music = $('.music'),
     $current = $loadingBox.find('.current'),
     $msg = $oneBox.find('.msg'),
     $page = $oneBox.find('.page'),
-    $twoBox = $('.twoBox');
+    $twoBox = $('.twoBox'),
+    $threeBox = $('.threeBox');
 //音乐播放板块
 ~ function () {
     var index = 2;
     $music.on('click', function (e) {
         var audio = this.getElementsByTagName('audio')[0];
-        console.log(index)
         if (index === 2) {
             index = 1;
             this.style.backgroundImage = 'url("./img/musicoff.png")';
@@ -22,11 +22,29 @@ let $music = $('.music'),
         }
     })
 }();
-
-//loading加第一页
+//第一页
+let oneBoxRender = (function () {
+    let done = function () {
+        let timer = setTimeout(() => {
+            $loadingBox.remove();
+            $oneBox.show();
+        }, 1500);
+        setTimeout(() => {
+            $msg.show();
+        }, 3500);
+        setTimeout(() => {
+            $page.show();
+        }, 5500);
+    }
+    return {
+        init: function () {
+            done()
+        }
+    }
+})()
+//loading页
 let loadingRender = (function () {
-    let imgData = ["img/psb.jpg", "img/wenli.png", "img/gezi.png", "img/leaves.png", "img/musicon.png", "img/musicoff.png"];
-
+    let imgData = ["img/psb.jpg", "img/wenli.png", "img/gezi.png", "img/leaves.png", "img/musicon.png", "img/musicoff.png",'img/1.png','img/3.png'];
     let n = 0,
         len = imgData.length;
 
@@ -37,7 +55,7 @@ let loadingRender = (function () {
                 tempImg = null;
                 $current.css('width', (++n) / len * 100 + '%');
                 //加载完成让当前的loading页消失
-                if (n/len >= 0.9) {
+                if (n / len >= 0.9) {
                     clearTimeout(delayTimer)
                     callback && callback()
                 }
@@ -59,18 +77,7 @@ let loadingRender = (function () {
         }, 10000)
     }
     //DONE：完成
-    let done = function () {
-        let timer = setTimeout(() => {
-            $loadingBox.remove();
-            $oneBox.show();
-        }, 1500);
-        setTimeout(() => {
-            $msg.show();
-        }, 3500);
-        setTimeout(() => {
-            $page.show();
-        }, 5500);
-    }
+    let done=oneBoxRender.init
     return {
         init: function () {
             run(done);
@@ -104,9 +111,6 @@ let twoBoxRender = (function () {
         }
     }
 })()
-$oneBox.on('click', function () {
-    twoBoxRender.init();
-})
 //第三页
 let threeBoxRender = (function () {
 
@@ -116,6 +120,54 @@ let threeBoxRender = (function () {
         }
     }
 })()
-$twoBox.on('click', function () {
-    threeBoxRender.init();
+
+//页面切换
+function move(el, callback) {
+    let str = 'up';
+    el.ontouchstart = function (e) {
+        this.y = e.changedTouches[0].pageY;
+    }
+    el.ontouchend = function (e) {
+
+        let y = e.changedTouches[0].pageY - this.y;
+        if (y > 0) {
+            str = 'down'
+        } else {
+            str = 'up'
+        }
+        callback(str);
+    }
+}
+move($oneBox[0], function (str) {
+    if (str == 'up') {
+        $oneBox[0].style.display = 'none';
+        $twoBox[0].style.display = 'block'
+        twoBoxRender.init()
+    } else {
+        $oneBox[0].style.display = 'none';
+        $threeBox[0].style.display = 'block'
+        threeBoxRender.init()
+    }
+})
+move($twoBox[0], function (str) {
+    if (str == 'up') {
+        $twoBox[0].style.display = 'none';
+        $threeBox[0].style.display = 'block';
+        threeBoxRender.init()
+    } else {
+        $twoBox[0].style.display = 'none';
+        $oneBox[0].style.display = 'block'
+        oneBoxRender.init()
+    }
+})
+move($threeBox[0], function (str) {
+    if (str == 'up') {
+        $threeBox[0].style.display = 'none';
+        $oneBox[0].style.display = 'block';
+        oneBoxRender.init();
+    } else {
+        $threeBox[0].style.display = 'none';
+        $twoBox[0].style.display = 'block';
+        twoBoxRender.init()
+    }
 })
