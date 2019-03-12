@@ -11,12 +11,19 @@ body {
   z-index: -4;
 }
 .change {
+  font-size: 16px;
+}
+.change .left {
+  animation: floatLeft 1s forwards infinite;
   position: fixed;
-  bottom: .3rem;
-  font-size: .5rem;
-  color: rgba(0, 0, 0, 0.3);
-  left: 50%;
-  margin-left: -1.5rem;
+  top: 50%;
+  left: 5px;
+}
+.change .right {
+  animation: floatRight 1s forwards infinite;
+  position: fixed;
+  right: 10px;
+  top: 50%;
 }
 .music {
   background-image: url('../img/musicon.png');
@@ -155,28 +162,28 @@ body {
   background: url('../img/leaves.png');
   width: 100%;
   height: 100%;
-  padding-top: .8rem;
+  padding-top: .5rem;
 }
 .twoBox .page {
   margin-left: .5rem;
-  width: 3rem;
+  width: 2.3rem;
   background: #027788;
-  font-size: .5rem;
+  font-size: .4rem;
   color: #fff;
   padding: 0.15rem;
   border-radius: .2rem;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   -webkit-animation-duration: 0.75s;
   animation-duration: 0.75s;
   -webkit-animation-name: bounceIn;
   animation-name: bounceIn;
 }
 .twoBox .inner {
-  width: 100%;
+  width: 80%;
   padding: 20px;
   position: relative;
   box-sizing: border-box;
-  margin-bottom: .4rem;
+  margin: 0 auto .4rem;
 }
 .twoBox .inner img {
   display: none;
@@ -186,14 +193,14 @@ body {
 .twoBox .inner ul li {
   display: none;
   position: absolute;
-  width: 1rem;
-  height: 1rem;
+  width: .8rem;
+  height: .8rem;
   border-radius: 50%;
   background-color: #17ac7a;
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
-  line-height: 1rem;
+  line-height: .8rem;
   animation: rotateIn 2s;
 }
 .twoBox .inner ul li:nth-child(1) {
@@ -226,6 +233,14 @@ body {
   -webkit-animation: fadeIn 2s;
   animation: fadeIn 2s;
 }
+.twoBox .bottom .sec .point {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #000;
+  border-radius: 50%;
+  margin-right: 10px;
+}
 .twoBox .bottom .dec {
   display: none;
   position: absolute;
@@ -244,14 +259,14 @@ body {
   background-image: url('../img/3.png');
   height: 100%;
   width: 100%;
-  padding-top: .8rem;
+  padding-top: .5rem;
 }
 .threeBox .page {
   width: 100%;
   margin: auto;
-  width: 3rem;
+  width: 2.3rem;
   background: #027788;
-  font-size: .5rem;
+  font-size: .4rem;
   color: #fff;
   padding: 0.15rem;
   border-radius: .2rem;
@@ -731,4 +746,36 @@ body {
 .slideInRight {
   -webkit-animation-name: slideInRight;
   animation-name: slideInRight;
+}
+@-webkit-keyframes floatLeft {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(10px, 0);
+  }
+}
+@keyframes floatLeft {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(10px, 0);
+  }
+}
+@-webkit-keyframes floatRight {
+  from {
+    transform: translate(10px, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes floatRight {
+  from {
+    transform: translate(10px, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
 }
